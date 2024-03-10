@@ -106,7 +106,9 @@ while dirnames:
     new_tab = [tab for tab in driver.window_handles if tab != current][0]
     
     driver.switch_to.window(current)
+    sleep(1)
     driver.close()
+    sleep(1)
     
     driver.switch_to.window(new_tab)
     sleep(2)
