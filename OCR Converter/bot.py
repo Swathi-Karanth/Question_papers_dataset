@@ -7,10 +7,10 @@ import pyautogui
 import os
 
 filenames = {}
-dirnames= ["Digital_Communication"]# USERDEFINED
+dirnames= ["SEM_1_Economics"]# USERDEFINED
 for x in dirnames:
-    filenames[x] = set(os.listdir(r'C:\Users\Sathvik Malgikar\OCR_BOT_IN'+f"\{x}"))
-    os.makedirs(r'C:\Users\Sathvik Malgikar\OCR_BOT_OUT'+f"\{x}")
+    filenames[x] = set(os.listdir(r'C:\Users\Swathi_Karanth\OCR_BOT_IN'+f"\{x}"))
+    os.makedirs(r'C:\Users\Swathi_Karanth\OCR_BOT_OUT'+f"\{x}")
 cs = webdriver.ChromeService("./chromedriver.exe")
 
 driver = webdriver.Chrome(service=cs)
@@ -89,15 +89,15 @@ while dirnames:
     ele= web_driver_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button#processTask")))
     ele.click()
     
-    sleep(16) # processing time
+    sleep(36) # processing time
     
 
     ele = web_driver_wait.until(EC.element_to_be_clickable((By.LINK_TEXT,"Download PDF")))
     ele.click()
     
     sleep(26)# download time
-    wait_for_file(r"C:\Users\Sathvik Malgikar\Downloads"+f"\{temp}")
-    move_file(r"C:\Users\Sathvik Malgikar\Downloads"+f"\{temp}",r"C:\Users\Sathvik Malgikar\OCR_BOT_OUT"f"\{x}")
+    wait_for_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}")
+    move_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}",r"C:\Users\Swathi_Karanth\OCR_BOT_OUT"f"\{x}")
 
     
 
@@ -115,6 +115,6 @@ while dirnames:
     
     
 
-sleep(100)    
+print("complete")   
 
 driver.close()
