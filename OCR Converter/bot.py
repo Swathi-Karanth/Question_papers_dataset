@@ -7,7 +7,7 @@ import pyautogui
 import os
 
 filenames = {}
-dirnames= ["SEM_1_Economics"]# USERDEFINED
+dirnames= ["Trial folder"]# USERDEFINED
 for x in dirnames:
     filenames[x] = set(os.listdir(r'C:\Users\Swathi_Karanth\OCR_BOT_IN'+f"\{x}"))
     os.makedirs(r'C:\Users\Swathi_Karanth\OCR_BOT_OUT'+f"\{x}")
@@ -60,9 +60,9 @@ while dirnames:
     temp = filenames[x].pop()
     driver.get("https://www.ilovepdf.com/ocr-pdf")
     sleep(4)
-    ele = driver.find_element(By.LINK_TEXT,"Select PDF file")
-    web_driver_wait.until(EC.element_to_be_clickable((By.LINK_TEXT,"Select PDF file")))
-    ele.click()
+    
+    ele1= web_driver_wait.until(EC.element_to_be_clickable((By.LINK_TEXT,"Select PDF file")))
+    ele1.click()
     sleep(3)
     
   
@@ -86,19 +86,10 @@ while dirnames:
     pyautogui.typewrite(temp)
     pyautogui.press("enter")
     
-    ele= web_driver_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button#processTask")))
-    ele.click()
+    ele2= web_driver_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button#processTask")))
+    ele2.click()
     
-    sleep(36) # processing time
-    
-
-    ele = web_driver_wait.until(EC.element_to_be_clickable((By.LINK_TEXT,"Download PDF")))
-    ele.click()
-    
-    sleep(26)# download time
-    wait_for_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}")
-    move_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}",r"C:\Users\Swathi_Karanth\OCR_BOT_OUT"f"\{x}")
-
+    sleep(34) # processing time
     
 
     current = driver.current_window_handle
@@ -112,6 +103,10 @@ while dirnames:
     
     driver.switch_to.window(new_tab)
     sleep(2)
+
+    wait_for_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}")
+    move_file(r"C:\Users\Swathi_Karanth\Downloads"+f"\{temp}",r"C:\Users\Swathi_Karanth\OCR_BOT_OUT"f"\{x}")
+
     
     
 
